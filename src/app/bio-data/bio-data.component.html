@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <header>
+        <h1>Bio-data Form</h1>
+      </header>
+      <div>
+        <p> This is test paragraph </p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="form-group">
+          <label for="firstname">First Name: </label>
+          <input type="text" id="firstname" class="form-control" name="firstname" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name: </label>
+          <input type="text" id="lastname" class="form-control" ngModel name="lastname" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" ngModel name="email" required email #em="ngModel">
+
+          <app-alert *ngIf="!em.valid" message="alertMessage"></app-alert>
+
+          <span class="help-block" style="color: red;" *ngIf="!em.valid && em.touched">Please enter a valid
+            Email...</span>
+        </div>
+        <div class="form-group">
+          <label for="province">Province</label>
+          <select id='province' class="form-control" [(ngModel)]="selectedProv" name="province">
+            <option *ngFor="let prov of provinces" [ngValue]="prov">{{prov}}</option>
+          </select>
+        </div>
+        <div>
+          <br>
+          <label style="margin-right: 40px;">Gender: </label>
+          <div *ngFor="let gender of genders" class="radio-inline" style="margin-right: 20px;">
+            <input class="form-check-input" type="radio" name="gender" [value]="gender" [(ngModel)]="selectedGender"
+              (change)="onGenderChange()">
+            <label class="form-check-label">{{gender.name}}</label>
+          </div>
+        </div>
+        <br>
+        <div>
+          <label for="birthday" style="margin-right: 20px;">Birthday: </label>
+          <input type="date" name="birthday">
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+        <br><br>
+        <div class="row" *ngIf="dataEntered">
+          <div class="col-xs-12">
+            <h2> Entered data </h2>
+            <h4> Name : {{userData.firstName}} {{userData.lastName}}</h4>
+            <h4> Email : {{userData.email}}</h4>
+            <h4> province : {{userData.province}}</h4>
+            <h4> Gender : {{userData.gender}}</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="checkbox" name="agreement" style="margin-right: 10px;" [(ngModel)]="agreement.name">
+            <label for="agreement"> I agree to all terms and conditions</label>
+
+            <label *ngIf="agreement.name; else unchecked" class="checkLabel">CHECKED</label>
+            <ng-template #unchecked>
+              <label class="checkLabel">UNCHECKED</label>
+            </ng-template>
+
+          </div>
+        </div>
+      </form>
+      <button (click)="onAgreement()" type="button" class="btn btn-primary">I Agree</button>
+    </div>
+  </div>
+
+</div>
