@@ -1,56 +1,73 @@
 <app-header></app-header>
 <main>
+  <div class="backdrop"></div>
+  <div class="modal">
+    <h1 class="modal-title">Do you want to continue ?</h1>
+    <div class="modal-actions">
+      <!-- <a [routerLink]="['/packages']">Yes</a> -->
+      <button class="btn btn-success btn-action1" [routerLink]="['home-page']">Yes</button>
+      <button class="btn btn-danger btn-action2" routerLink="">No</button>
+    </div>
+  </div>
   <section id="product-overview">
-    <p>This is test paragraph for pseudo classes</p>
+
+    <h1>Happy BirthDay</h1>
+    <div>
+      <button [routerLink]="['customers','2','largo']" [queryParams]="{editCustomer: '1', cust1: '2'}"
+        fragment="loading" class="btn btn-primary"> Load Customers </button>
+      <button (click)="onLoadCustomer()" class="btn btn-primary"> Load C </button>
+      <button (click)="onSendingData()" class="btn btn-primary"> Change brand Name </button>
+    </div>
+
   </section>
-  <section id="plans">
-      <h1 class="section-title">Choose your plan</h1>
-      <div>
-        <article class="plan">
-          <h1 class="plan__title">Free</h1>
-          <h2 class="plan__price">$0/month</h2>
-          <h3>For hobby projects or small teams</h3>
-          <ul class="plan__features">
-            <li>1 Workspace</li>
-            <li>Unlimited Traffic</li>
-            <li>10GB Storage</li>
-            <li>Basic Support</li>
-          </ul>
-          <div>
-            <button class="button">CHOOSE PLAN</button>
-          </div>
-        </article>
-        <article  class="plan plan--highlighted">
-          <h1 class="plan__annotation">Recomended</h1>
-          <h1 class="plan__title">PLUS</h1>
-          <h2 class="plan__price">$30/month</h2>
-          <h3>For ambitious projects</h3>
-          <ul class="plan__features">
-            <li>5 Workspace</li>
-            <li>Unlimited Traffic</li>
-            <li>100GB Storage</li>
-            <li>Plus Support</li>
-          </ul>
-          <div>
-            <button class="button">CHOOSE PLAN</button>
-          </div>
-        </article>
-        <article  class="plan">
-          <h1 class="plan__title">PREMIUM</h1>
-          <h2 class="plan__price">$100/month</h2>
-          <h3>For Business projects</h3>
-          <ul class="plan__features">
-            <li>10 Workspace</li>
-            <li>Unlimited Traffic</li>
-            <li>500GB Storage</li>
-            <li>Plus Support</li>
-          </ul>
-          <div>
-            <button class="button">CHOOSE PLAN</button>
-          </div>
-        </article>
-      </div>
-    </section>
+  <div id="plans">
+    <h1 class="section-title">Choose your plan</h1>
+    <div class="plan__list">
+      <article class="plan">
+        <h1 class="plan__title">Free</h1>
+        <h2 class="plan__price">$0/month</h2>
+        <h3>For hobby projects or small teams</h3>
+        <ul class="plan__features">
+          <li>1 Workspace</li>
+          <li>Unlimited Traffic</li>
+          <li>10GB Storage</li>
+          <li>Basic Support</li>
+        </ul>
+        <div>
+          <button class="button">CHOOSE PLAN</button>
+        </div>
+      </article>
+      <article class="plan plan--highlighted">
+        <h1 class="plan__annotation">Recomended</h1>
+        <h1 class="plan__title">PLUS</h1>
+        <h2 class="plan__price">$30/month</h2>
+        <h3>For ambitious projects</h3>
+        <ul class="plan__features">
+          <li>5 Workspace</li>
+          <li>Unlimited Traffic</li>
+          <li>100GB Storage</li>
+          <li>Plus Support</li>
+        </ul>
+        <div>
+          <button class="button">CHOOSE PLAN</button>
+        </div>
+      </article>
+      <article class="plan">
+        <h1 class="plan__title">PREMIUM</h1>
+        <h2 class="plan__price">$100/month</h2>
+        <h3>For Business projects</h3>
+        <ul class="plan__features">
+          <li>10 Workspace</li>
+          <li>Unlimited Traffic</li>
+          <li>500GB Storage</li>
+          <li>Plus Support</li>
+        </ul>
+        <div>
+          <button class="button">CHOOSE PLAN</button>
+        </div>
+      </article>
+    </div>
+  </div>
   <section class="reason">
     <h1 class="reason__heading">When you find it Hard, take the easy one first.</h1>
     <ul class="reason__features">
@@ -70,7 +87,7 @@
         <div class="inner__feature">
 
         </div>
-        <p class="inner-paragraph">Take more breaks, always stick around</p>
+        <p class="inner-paragraph">Take more breaks</p>
       </li>
     </ul>
   </section>
@@ -87,4 +104,4 @@
     </ul>
   </nav>
 </footer>
-
+<!-- <script src="home-page.component.ts"></script> -->

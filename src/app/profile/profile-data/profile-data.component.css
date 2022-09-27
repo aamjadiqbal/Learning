@@ -1,0 +1,21 @@
+.profile {
+  background-color: #ccc;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.profile h3 {
+  border: 1px solid orange;
+  padding: 5px;
+  background-color: rgb(218, 198, 161);
+}
+.spinner {
+
+ display: flex;
+ height: 200px;
+ align-items: center;
+ justify-content: center;
+}

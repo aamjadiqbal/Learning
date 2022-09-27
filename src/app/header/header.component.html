@@ -1,12 +1,52 @@
-<header class="main-header">
-  <div> <a routerLink="" class="main-header__brand">FreedINN</a></div>
-  <nav class="main-navv">
-    <ul class="main-navv__items">
-      <li class="main-navv__item"><a routerLink="/bio-data">Bio Data</a></li>
-      <li class="main-navv__item"><a routerLink="/packages">Packages</a></li>
-      <li class="main-navv__item"><a routerLink="/customers">Customers</a></li>
-      <li class="main-navv__item main-navv__item--cta"><a routerLink="">Start Hosting</a></li>
+<div class="backdrop"></div>
 
-    </ul>
-  </nav>
+<header class="main-header">
+
+  <div class="header-view">
+    <a class="main-header__brand"> <i class="bi bi-dice-6"></i></a>
+    <a *ngIf="dataReceived" (click)="onNameClick()" class="main-header__name"> freedINN </a>
+    <a *ngIf="!dataReceived" (click)="onNameClick()" class="main-header__name"> FINN </a>
+  </div>
+
+
+  <!-- <nav class="main-navv"> -->
+  <ul class="main-navv__items">
+    <li class="main-navv__item"><a
+      routerLink="/learning">Learning</a></li>
+    <li class="main-navv__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
+        routerLink="/bio-data">Bio Data</a></li>
+    <li class="main-navv__item"><a routerLink="/packages">Packages</a></li>
+    <!-- <li class="main-navv__item"><a [routerLink]="['/customers']">Customers</a></li> -->
+    <li class="main-navv__item"><a routerLink="/customers/5/Anaya">Customers</a></li>
+    <li class="main-navv__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
+      routerLink="/profile-data">Profile Data</a></li>
+    <li class="main-navv__item main-navv__item--cta"><a routerLink="/start-hosting">Profiles</a></li>
+
+  </ul>
+
+  <!-- </nav> -->
 </header>
+<nav class="mobile-nav">
+  <ul class="mobile-nav__items">
+    <li class="mobile-nav__item">
+      <a routerLink="/bio-data">Bio-data</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a routerLink="/packages">Packages</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a routerLink="/customers/5/Bismil">Customers</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a routerLink="/start-hosting">Profiles</a>
+    </li>
+  </ul>
+</nav>
+
+<!--
+  Absolute vs Relative path
+  Absolute path:
+  '/name' can be used anywhere.
+  Relative path:
+  'name' can only be used on root domain.
+ -->

@@ -1,1 +1,42 @@
 <app-header></app-header>
+<!-- <ng-template  #countEstimate let-updatedCounter="estimate">
+  <h1>The counter is: {{updatedCounter}}</h1>
+</ng-template> -->
+<!-- <ng-container *ngTemplateOutlet="countEstimate;context:ctx"></ng-container> -->
+<div class="grid-container">
+  <div class="ele-1">Element1</div>
+  <div class="ele-2">Element2</div>
+  <div class="ele-3">Element3</div>
+  <div class="ele-4">Element4</div>
+</div>
+<div class="query-params-div">
+  <input type="text" [(ngModel)]="filteredData">
+
+  <h2>Condition is : {{checkStatus | async}}</h2>
+  <h2>My name is : {{user.name | uppercase }}</h2>
+  <h2>Today is : {{ todayDate | date }}</h2>
+  <h2 *ngFor="let item of testName | filter:filteredData:'city'"> {{item.city|shorten:6 }}</h2>
+<h2>Query paramer is : {{queryPara.iid}}</h2>
+<h2>Query paramer is : {{queryPara.cust}}</h2>
+<h2>This page belongs to: {{queryPara.message}}</h2>
+
+
+</div>
+
+<main>
+  <div>
+    <div class="container">
+    <div class="container__image-container">
+      <img src="../../assets/broccoli-37782957.jpg"  class="container__image"/>
+    </div>
+    <div class="containerInfo">
+      <h1>Broccoli</h1>
+      <p>Defines the columns and rows of the grid with a
+        space-separated list of values. The values represent the track size, and the space between them represents the grid line. </p>
+    </div>
+
+    </div>
+
+  </div>
+</main>
+

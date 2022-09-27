@@ -1,0 +1,17 @@
+.customer-container {
+
+
+  margin-top: 100px;
+  margin-left: 100px;
+}
+.customer {
+padding: 20px;
+  background: red;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-top: 50px;
+  text-decoration: none;
+  color: black;
+  margin: 15px;
+  cursor: pointer;
+}

@@ -1,0 +1,30 @@
+.container {
+  margin: 85px;
+}
+.input-box {
+  background: rgb(233, 160, 134);
+  width: 50%;
+  height: auto;
+  padding-left: 30px;
+}
+
+.input {
+  margin: 30px;
+  padding: 10px;
+  background-color: gainsboro;
+  width: 80%;
+}
+.submit-button {
+  margin-top: 15px;
+}
+.warning-message {
+  text-align: center;
+  background: wheat;
+  color: red;
+  border: 2px solid red;
+  width: 50%;
+  border-radius: 15px;
+}
+.addProfile-container {
+
+}

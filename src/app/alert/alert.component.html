@@ -1,1 +1,18 @@
-<p>{{message}</p>
+<p >{{message}}</p>
+<button type="button" (click)="onErrorClick()" class="btn btn-primary">@Output</button>
+
+<h3>
+  <span>Hello, I am </span>
+  <ng-content select=".app"></ng-content>
+</h3>
+<h4>
+  <ng-content select=".app1" #xyz></ng-content>
+</h4>
+<div class="d-flex">
+  <ng-content select='header'></ng-content>
+  <ng-content select='#card-sub-header'></ng-content>
+  <ng-content select='.card-body'></ng-content>
+  <ng-content select='[title]'></ng-content>
+</div>
+
+<!-- ng-content is used for content in boi-data html as content of alertcomponent -->

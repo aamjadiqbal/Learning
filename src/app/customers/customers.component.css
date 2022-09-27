@@ -1,0 +1,110 @@
+.grid-container {
+  border: 1px solid black;
+  margin: 120px 0;
+  display: grid;
+  /* width: 100%;
+  height: 500px; */
+  grid-template-columns: 25% 1fr 2fr;
+  grid-template-rows: 100px 80px;
+
+    /* justify-items: stretch;   default value*/
+    /* justify-content: center; */
+    /* align-items: stretch;           default value*/
+    /* align-content: center; */
+
+}
+.grid-container > div {
+  text-align: center;
+  /* padding: 40px; */
+
+}
+.ele-1 {
+  background-color: orange;
+}
+.ele-2 {
+  background-color: gray;
+}
+.ele-3 {
+  background-color: green;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  /* justify-self: center;
+  align-self: center; */
+}
+.ele-4 {
+  background-color: palevioletred;
+}
+
+.container {
+  /* width: 90%; */
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+}
+.container__image-container {
+  width: 100%;
+  /* display: inline-block; */
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
+
+}
+.container__image {
+  /* display: inline-block; */
+  width: 100%;
+
+  /* vertical-align: middle; */
+}
+.containerInfo {
+width: 100%;
+text-align: center;
+/* display: inline-block; */
+/* vertical-align: middle; */
+/* padding: 25px; */
+}
+.query-params-div {
+  margin: 120px 50px;
+}
+
+@media (min-width: 580px) {
+
+  .container {
+    /* width: 90%; */
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    align-items: center;
+  }
+  .container__image-container {
+    width: 70%;
+    /* display: inline-block; */
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
+
+
+  }
+  .container__image:hover {
+    animation-name: flip-image;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    cursor: pointer;
+  }
+  .container__image {
+    /* display: inline-block; */
+    width: 100%;
+
+    /* vertical-align: middle; */
+  }
+  .containerInfo {
+  width: 30%;
+  text-align: center;
+  /* display: inline-block; */
+  /* vertical-align: middle; */
+  padding: 25px;
+  }
+}
+@keyframes flip-image {
+  0%   {transform: rotate(0);}
+  50%  {transform: rotate(160);}
+  100%  {transform: rotate(360);}
+}

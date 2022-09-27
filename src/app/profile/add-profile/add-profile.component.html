@@ -1,0 +1,45 @@
+
+
+
+<div class="container">
+
+  <form [formGroup]="newReactiveForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="userInfo">
+      <div class="form-group">
+        <label for="username">User Name: </label>
+        <input type="text" class="form-control" id="username" formControlName="username">
+        <span *ngIf="!newReactiveForm.get('userInfo.username').valid && newReactiveForm.get('userInfo.username').touched">
+          Please enter a valid name
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text" class="form-control" id="email" formControlName="email">
+        <span *ngIf="!newReactiveForm.get('userInfo.email').valid && newReactiveForm.get('userInfo.email').touched">
+          Please enter a valid email
+        </span>
+      </div>
+    </div>
+
+    <label style="margin-right: 40px;">Gender: </label>
+    <div *ngFor="let gender of gender" class="radio-inline" style="margin-right: 20px;">
+      <input class="form-check-input" type="radio" formControlName="gender" [value]="gender">
+      <label class="form-check-label">{{gender}}</label>
+    </div>
+    <div formArrayName="hobbies" *ngFor="let hobby of getControls(); let i = index">
+      <label style="margin-right: 40px;">Hobby: </label>
+      <div class="form-group">
+        <input class="form-control w-100" type="text" [formControlName]="i">
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" (click)="onAddingHobbie()">Add hobby</button>
+
+    <button class="btn btn-primary d-flex mt-5 w-100" style="justify-content:center;" type="submit">Submit</button>
+    <span *ngIf="!newReactiveForm.valid && newReactiveForm.touched">
+      Please enter a valid data
+    </span>
+  </form>
+
+</div>
+
+

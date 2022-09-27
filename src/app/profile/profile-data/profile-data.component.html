@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 mt-3">
+      <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" required ngModel name="title" />
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea class="form-control" id="content" required ngModel name="content"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
+          Create Profile
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <button class="btn btn-primary" (click)="onFetchPosts()">
+        Fetch Profiles
+      </button>
+      |
+      <button class="btn btn-danger" [disabled]="loadedProfiles.length < 1" (click)="onClearPosts()">
+        Delete Profiles
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isProfileLoading && !isError">
+    <div class="spinner">
+      <div class="spinner-border" role="status" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div *ngIf="isError" class="alert alert-danger">
+    <h1 style="text-align: center;"> {{isError}} </h1>
+  </div>
+
+  <div *ngIf="!isProfileLoading">
+    <div  *ngIf="loadedProfiles.length < 1">
+      <h1 style="text-align: center;"> No Profile is available. </h1>
+    </div>
+    <div class="row" *ngIf="loadedProfiles.length >= 1">
+      <div *ngFor="let profile of loadedProfiles; let ind = index" class="profile">
+        <h3>Roll Number: {{ind + 1}}</h3>
+        <h3>Title: {{profile.title}}</h3>
+        <h3>Content: {{profile.content}}</h3>
+      </div>
+    </div>
+
+  </div>

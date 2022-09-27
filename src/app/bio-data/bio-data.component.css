@@ -1,11 +1,85 @@
+.form-header {
+  text-align: center;
+  color: #a52a2a;
+  padding: 100px;
+  /* background:rgb(70, 225, 179);
+  border: 1px solid black; */
+
+}
 .container {
-  margin-top: 30px;
+  /* margin-top: 110px; */
   width: 100%;
 }
+/* will work for both classes, ng-touched and ng-invalid */
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 .checkLabel {
   border: 2px solid green;
   margin-left: 10px;
+
+}
+.form-control:focus {
+  border-color: #8de966;
+  background-color: #ccc;
+}
+.custom-checkbox {
+  /* margin: 15px; */
+  margin-right: 15px;
+  border: 1px solid #ccc;
+  width: 2rem;
+  height: 2rem;
+  background-color: #ccc;
+  -webkit-appearance: none;
+  appearance: none;
+}
+#checkbox-box input[type="checkbox"] + label {
+  vertical-align: middle;
+}
+.custom-checkbox:active{
+  outline: none;
+}
+.custom-checkbox:checked {
+  background-color: greenyellow;
+  border: 1px solid greenyellow;
+  outline: none;
+}
+.test-email input.ng-touched.ng-invalid {
+  background-color: rgb(243, 172, 172);
+}
+/* #testEmail:invalid */
+/* .test-email input[type="email"]:invalid {
+  background-color: rgb(243, 172, 172);
+} */
+.form-box {
+  width: 100%;
+  padding: 15px;
+  border: 1px dotted green;
+  /* margin: 100px 10px 100px 10px; */
+  height: 500px;
+  background-color: rgb(236, 190, 117);
+}
+.signup-form {
+  margin: auto;
+
+  width: 80%;
+  display: grid;
+  grid-template-columns: 100px auto;
+  /* grid-template-rows: auto auto auto auto; */
+  row-gap: 15px;
+}
+.first-name {
+  /* will occupy 2 coulumns */
+  grid-column: span 2;
+  /* grid-column: 1/-1; */
+}
+
+@media(max-width: 400px) {
+
+  .signup-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
 }

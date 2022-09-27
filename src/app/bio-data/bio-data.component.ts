@@ -8,8 +8,14 @@ import { Gender } from '../model';
   styleUrls: ['./bio-data.component.css']
 })
 export class BioDataComponent implements OnInit {
+
+  errorFromAlert = document.createElement('p').textContent = '';
+
+
+
+  showHeading: boolean = false;
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
   @ViewChild('f') submittedFrom: NgForm;
   alertMessage: 'Plz enter a valid Email';
@@ -90,13 +96,32 @@ export class BioDataComponent implements OnInit {
     console.log(this.agreement);
   }
 
-  onSubmit() {
+  onSubmit(form) {
+    console.log('form', form)
+
         this.dataEntered = true;
-        this.userData.firstName = this.submittedFrom.value.firstname;
-        this.userData.lastName = this.submittedFrom.value.lastname;
+        this.userData.firstName = this.submittedFrom.value.customFormGroup.firstname;
+        this.userData.lastName = this.submittedFrom.value.customFormGroup.lastname;
         this.userData.email = this.submittedFrom.value.email;
         this.userData.province = this.submittedFrom.value.province;
-        this.userData.gender = this.submittedFrom.value.gender;
+        this.userData.gender = this.submittedFrom.value.gender.name;
         this.submittedFrom.reset();
+
+  }
+  onShowHeading() {
+      this.showHeading = !this.showHeading
+  }
+  onErrorMessageClick(event) {
+   const errorFromAlert = document.createElement('p');
+   errorFromAlert.textContent = event.errorName;
+   document.querySelector('.test-email').appendChild(errorFromAlert)
+  }
+  onSuggestUser() {
+    this.submittedFrom.form.patchValue({
+        customFormGroup: {
+          firstname: 'Bismil',
+          lastname: 'mwm'
+        }
+    })
   }
 }

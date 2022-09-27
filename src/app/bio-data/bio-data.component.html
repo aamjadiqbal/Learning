@@ -1,31 +1,60 @@
 <app-header></app-header>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <header>
-        <h1>Bio-data Form</h1>
+      <header class="form-header">
+        <h1 *appCcIf="!showHeading">PROFILE</h1>
+        <button (click)="onShowHeading()" class="btn btn-primary">Show Heading</button>
       </header>
-      <div>
-        <p> This is test paragraph </p>
-      </div>
 
-      <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <div class="form-group">
-          <label for="firstname">First Name: </label>
-          <input type="text" id="firstname" class="form-control" name="firstname" ngModel required>
+
+      <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+
+        <div name="user-db" class="form-group" id="user-db" #customFormGroup="ngModelGroup"
+          ngModelGroup="customFormGroup">
+          <div class="form-group">
+            <label for="firstname">First Name: </label>
+            <input type="text" id="firstname" class="form-control" name="firstname" ngModel required>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name: </label>
+            <input type="text" id="lastname" class="form-control" ngModel name="lastname" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="lastname">Last Name: </label>
-          <input type="text" id="lastname" class="form-control" ngModel name="lastname" required>
+
+        <div>
+          <button type="button" class="btn btn-primary mb-3" (click)="onSuggestUser()">Suggest User</button>
         </div>
+        <p backgroundColor appBorder [defaultColor]="'orange'" [hoverColor]="'green'"> Attribue directive </p>
         <div class="form-group">
+          <!-- here backgroundColor is a custom attribute directive, while defaultColor and hoverColor are Custom Properties binded -->
           <label for="email">Email</label>
           <input type="text" id="email" class="form-control" ngModel name="email" required email #em="ngModel">
 
-          <app-alert *ngIf="!em.valid" message="alertMessage"></app-alert>
+          <app-alert *ngIf="!em.valid" [message]="alertMessage" (errorClicked)="onErrorMessageClick($event)">
+            <strong class="app">Senior Developer</strong>
+            <strong class="app1">Experience : 5 years</strong>
+            <!-- new ng-content ref. -->
+            <div #header ngProjectAs='header'>Card Header</div>
+            <span id='card-sub-header'>Card Sub Header</span>
+            <div class="card-body">
+              This is a card Body!!!
+            </div>
+            <footer title="card-footer">
+              Card Footer.
+            </footer>
+          </app-alert>
+
 
           <span class="help-block" style="color: red;" *ngIf="!em.valid && em.touched">Please enter a valid
             Email...</span>
+        </div>
+        <!-- <select id='province' class="form-control" [ngModel]="'any custom string'" name="province">
+          property binding with ngModel , not twoway binding [()] -->
+        <div class="test-email">
+          <label for="testEmail">Test Email</label>
+          <input type="email" id="testEmail" class="form-control" name="test-email" required ngModel>
         </div>
         <div class="form-group">
           <label for="province">Province</label>
@@ -48,7 +77,8 @@
           <input type="date" name="birthday">
         </div>
         <br>
-        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+        <button class="btn btn-primary w-100" type="submit" [disabled]="!f.valid">Submit</button>
+        <!-- <button class="btn btn-primary" type="submit">Submit</button> -->
         <br><br>
         <div class="row" *ngIf="dataEntered">
           <div class="col-xs-12">
@@ -60,8 +90,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12">
-            <input type="checkbox" name="agreement" style="margin-right: 10px;" [(ngModel)]="agreement.name">
+          <div id="checkbox-box" class="col-xs-12">
+            <input class="custom-checkbox" type="checkbox" name="agreement" [(ngModel)]="agreement.name">
             <label for="agreement"> I agree to all terms and conditions</label>
 
             <label *ngIf="agreement.name; else unchecked" class="checkLabel">CHECKED</label>
@@ -72,8 +102,19 @@
           </div>
         </div>
       </form>
-      <button (click)="onAgreement()" type="button" class="btn btn-primary">I Agree</button>
+      <button (click)="onAgreement()" type="button" class="btn btn-primary mb-5">I Agree</button>
     </div>
   </div>
 
+</div>
+<div class="form-box">
+  <form class="signup-form">
+
+    <label for="firstname">First Name: </label>
+    <input class="first-name" type="text" id="firstname" name="firstname" required>
+    <label for="lastname">Last Name: </label>
+    <input type="text" id="lastname" name="lastname" required>
+    <label for="city">City: </label>
+    <input type="text" id="city" name="city" required>
+  </form>
 </div>

@@ -1,1 +1,16 @@
-<p>start-hosting works!</p>
+
+<app-header></app-header>
+<div class="row">
+  <div class="customer-container">
+    <a
+    [routerLink]="['/start-hosting', customer.id]"
+    [queryParams]="{allowEdit: customer.id === 3 ? '1': '0'}"
+    *ngFor="let customer of Customers" class="customer">
+          {{ customer.name }}
+    </a>
+  </div>
+</div>
+<div class="col-12">
+  <router-outlet></router-outlet>
+</div>
+
