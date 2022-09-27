@@ -15,6 +15,7 @@ export class CustomersComponent implements OnInit {
     setTimeout(() => {
             resolve('stable')
     }, 2000)
+
  }) ;
 
   filteredData = '';
